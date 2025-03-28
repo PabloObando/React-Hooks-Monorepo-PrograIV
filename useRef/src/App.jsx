@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useRef } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const buttonRef = useRef(null);
+
+  const changeColor = () => {
+    buttonRef.current.style.backgroundColor =
+      buttonRef.current.style.backgroundColor === "red" ? "blue" : "red";
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="App">
+      <h1>useRef para cambiar color de un botón</h1>
+      <button ref={buttonRef}>Soy un botón</button>
+      <button onClick={changeColor} style={{ marginLeft: "10px" }}>
+        Cambiar color
+      </button>
+    </div>
+  );
 }
 
-export default App
+export default App;
+
+
